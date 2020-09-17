@@ -111,9 +111,9 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Trigger : " + other.name);
-        if(other.name == "Coin"){
+        if(other.GetComponent<Collider2D>().tag.Contains("Coin")){
             GameManagement.instance.Score += 1000;
-            
+            Destroy(other.gameObject);
         }
         else{
             isDead = true;
